@@ -1,75 +1,78 @@
 <template>
-  <div class="lead-capture-form">
-    <h2 style="font-size: 24px; margin-bottom: 20px;">Lead Capture Form</h2>
-    <form @submit.prevent="submitForm" style=" margin: 0 auto;">
-      <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input type="text" class="form-control " id="firstName" v-model="lead.firstName" :class="{'border-danger': !isValidFirstName && isTouched('firstName')}" required
-               @blur="setTouched('firstName')"/>
-        <label v-if="!isValidFirstName && isTouched('firstName')" class="text-danger">Please enter your first name.</label>
-      </div>
-
-      <div class="form-group">
-        <label for="lastName">Last Name</label>
-        <input type="text" class="form-control" :class="{'border-danger': !isValidLastName && isTouched('lastName')}" id="lastName" v-model="lead.lastName" required
-               @blur="setTouched('lastName')"/>
-        <label v-if="!isValidLastName && isTouched('lastName')" class="text-danger">Please enter your last name.</label>
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" v-model="lead.email" required :class="{'border-danger': !isValidEmail && isTouched('email')}" @blur="setTouched('email')"/>
-        <div v-if="!isValidEmail && isTouched('email')" class="text-danger">Please enter a valid email address.
+  <div class="row">
+    <div class="lead-capture-form">
+      <h2 style="font-size: 24px; margin-bottom: 20px;">Lead Capture Form</h2>
+      <form @submit.prevent="submitForm" style=" margin: 0 auto;">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control " id="firstName" v-model="lead.firstName" :class="{'border-danger': !isValidFirstName && isTouched('firstName')}" required
+                 @blur="setTouched('firstName')"/>
+          <label v-if="!isValidFirstName && isTouched('firstName')" class="text-danger">Please enter your first name.</label>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="address">Address</label>
-        <input type="text" class="form-control" id="address" v-model="lead.address" :class="{'border-danger': !isValidAddress && isTouched('address')}" required
-               @blur="setTouched('address')"/>
-        <div v-if="!isValidAddress && isTouched('address')" class="text-danger">Please enter your address.</div>
-      </div>
-
-      <div class="form-group">
-        <label for="country">Country</label>
-        <select class="form-control" id="country" v-model="lead.country" :class="{'border-danger': !isValidCountry && isTouched('country')}" required @blur="setTouched('country')">
-          <option disabled value="">Select your country</option>
-          <option v-for="country in countries" :key="country.alpha2Code" :value="country.name.official">
-            {{ country.name.official }}
-          </option>
-        </select>
-        <div v-if="!isValidCountry && isTouched('country')" class="text-danger">Please select a country.</div>
-      </div>
-
-      <div class="form-group">
-        <label for="phoneNumber">Phone Number</label>
-        <input maxlength="10" minlength="10" type="tel" class="form-control" id="phoneNumber" v-model="lead.phoneNumber"
-               :class="{'border-danger': !isValidNumber && isTouched('phoneNumber')}" required @blur="setTouched('phoneNumber')"/>
-        <div v-if="!isValidNumber && isTouched('phoneNumber')" class="text-danger">Please enter your phone
-          number.
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control" :class="{'border-danger': !isValidLastName && isTouched('lastName')}" id="lastName" v-model="lead.lastName" required
+                 @blur="setTouched('lastName')"/>
+          <label v-if="!isValidLastName && isTouched('lastName')" class="text-danger">Please enter your last name.</label>
         </div>
-      </div>
 
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="yes" id="flexCheckDefault" v-model="lead.marketingOpt"
-               @blur="setTouched('question')"/>
-        <label class="form-check-label" for="flexCheckDefault">
-          Receive Marketing Emails?
-        </label>
-      </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" v-model="lead.email" required :class="{'border-danger': !isValidEmail && isTouched('email')}" @blur="setTouched('email')"/>
+          <div v-if="!isValidEmail && isTouched('email')" class="text-danger">Please enter a valid email address.
+          </div>
+        </div>
 
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="yes" id="flexCheckDefault" v-model="lead.termsAgreed"
-               :class="{'border-danger': !isValidTerms && isTouched('termsAgreed')}" required @blur="setTouched('termsAgreed')"/>
-        <label class="form-check-label" for="flexCheckDefault">
-          I agree to the <a href="#">Terms and Conditions</a>
-        </label>
-        <div v-if="!isValidTerms && isTouched('termsAgreed')" class="text-danger">Please agree to our terms.</div>
-      </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" class="form-control" id="address" v-model="lead.address" :class="{'border-danger': !isValidAddress && isTouched('address')}" required
+                 @blur="setTouched('address')"/>
+          <div v-if="!isValidAddress && isTouched('address')" class="text-danger">Please enter your address.</div>
+        </div>
 
-      <button type="submit" class="btn btn-primary" :disabled="submitPending" style="margin-top: 20px;">Submit</button>
-    </form>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <select class="form-control" id="country" v-model="lead.country" :class="{'border-danger': !isValidCountry && isTouched('country')}" required @blur="setTouched('country')">
+            <option disabled value="">Select your country</option>
+            <option v-for="country in countries" :key="country.alpha2Code" :value="country.name.official">
+              {{ country.name.official }}
+            </option>
+          </select>
+          <div v-if="!isValidCountry && isTouched('country')" class="text-danger">Please select a country.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input maxlength="10" minlength="10" type="tel" class="form-control" id="phoneNumber" v-model="lead.phoneNumber"
+                 :class="{'border-danger': !isValidNumber && isTouched('phoneNumber')}" required @blur="setTouched('phoneNumber')"/>
+          <div v-if="!isValidNumber && isTouched('phoneNumber')" class="text-danger">Please enter your phone
+            number.
+          </div>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="yes" id="flexCheckDefault" v-model="lead.marketingOpt"
+                 @blur="setTouched('question')"/>
+          <label class="form-check-label" for="flexCheckDefault">
+            Do You Want To Recieve Marketing Emails?
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="yes" id="flexCheckDefault" v-model="lead.termsAgreed"
+                 :class="{'border-danger': !isValidTerms && isTouched('termsAgreed')}" required @blur="setTouched('termsAgreed')"/>
+          <label class="form-check-label" for="flexCheckDefault">
+            I agree to the <a href="#">Terms and Conditions</a>
+          </label>
+          <div v-if="!isValidTerms && isTouched('termsAgreed')" class="text-danger">Please agree to our terms.</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" :disabled="submitPending" style="margin-top: 20px;">Submit</button>
+      </form>
+    </div>
   </div>
+
 </template>
 
 <script lang="ts">
@@ -132,7 +135,7 @@ export default {
 
   async mounted() {
     try {
-      const response = await fetch('https://restcountries.com/v3.1/all');
+      const response = await fetch(`https://restcountries.com/v3.1/all`);
       this.countries = await response.json();
     } catch (error) {
       console.error('Error fetching countries:', error);
@@ -166,7 +169,7 @@ export default {
         country: '',
         phoneNumber: '',
         marketingOpt: false,
-        question: false,
+        termsAgreed: false
       };
 
       // Reset touched state
@@ -202,17 +205,6 @@ export default {
 </script>
 
 <style>
-/* Reset default margins and paddings */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Arial', sans-serif;
-  line-height: 1.6;
-}
 
 .lead-capture-form {
   max-width: 600px;
@@ -243,11 +235,6 @@ body {
   outline: none;
   border-color: #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
-}
-
-.invalid-feedback {
-  color: #dc3545;
-  font-size: 14px;
 }
 
 .form-check {
