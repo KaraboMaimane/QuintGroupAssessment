@@ -1,34 +1,36 @@
 <template>
-  <div class="row">
-    <div class="lead-capture-form">
-      <h2 style="font-size: 24px; margin-bottom: 20px;">Lead Capture Form</h2>
-      <form @submit.prevent="submitForm" style=" margin: 0 auto;">
+  <div class="d-block mx-auto">
+    <div class="lead-capture-form bg-color-gray-02">
+      <h1 class="header__title">Get in touch with our team today</h1>
+      <p class="header__synopsis">We would love to work with you.</p>
+
+      <form @submit.prevent="submitForm" class="form">
         <div class="form-group">
           <label for="firstName">First Name</label>
           <input type="text" class="form-control " id="firstName" v-model="lead.firstName" :class="{'border-danger': !isValidFirstName && isTouched('firstName')}" required
                  @blur="setTouched('firstName')"/>
-          <label v-if="!isValidFirstName && isTouched('firstName')" class="text-danger">Please enter your first name.</label>
+          <p v-if="!isValidFirstName && isTouched('firstName')" class="text-danger">Please enter your first name.</p>
         </div>
 
         <div class="form-group">
           <label for="lastName">Last Name</label>
           <input type="text" class="form-control" :class="{'border-danger': !isValidLastName && isTouched('lastName')}" id="lastName" v-model="lead.lastName" required
                  @blur="setTouched('lastName')"/>
-          <label v-if="!isValidLastName && isTouched('lastName')" class="text-danger">Please enter your last name.</label>
+          <p v-if="!isValidLastName && isTouched('lastName')" class="text-danger">Please enter your last name.</p>
         </div>
 
         <div class="form-group">
           <label for="email">Email</label>
           <input type="email" class="form-control" id="email" v-model="lead.email" required :class="{'border-danger': !isValidEmail && isTouched('email')}" @blur="setTouched('email')"/>
-          <div v-if="!isValidEmail && isTouched('email')" class="text-danger">Please enter a valid email address.
-          </div>
+          <p v-if="!isValidEmail && isTouched('email')" class="text-danger">Please enter a valid email address.
+          </p>
         </div>
 
         <div class="form-group">
           <label for="address">Address</label>
           <input type="text" class="form-control" id="address" v-model="lead.address" :class="{'border-danger': !isValidAddress && isTouched('address')}" required
                  @blur="setTouched('address')"/>
-          <div v-if="!isValidAddress && isTouched('address')" class="text-danger">Please enter your address.</div>
+          <p v-if="!isValidAddress && isTouched('address')" class="text-danger">Please enter your address.</p>
         </div>
 
         <div class="form-group">
@@ -39,22 +41,22 @@
               {{ country.name.official }}
             </option>
           </select>
-          <div v-if="!isValidCountry && isTouched('country')" class="text-danger">Please select a country.</div>
+          <p v-if="!isValidCountry && isTouched('country')" class="text-danger">Please select a country.</p>
         </div>
 
         <div class="form-group">
           <label for="phoneNumber">Phone Number</label>
           <input maxlength="10" minlength="10" type="tel" class="form-control" id="phoneNumber" v-model="lead.phoneNumber"
                  :class="{'border-danger': !isValidNumber && isTouched('phoneNumber')}" required @blur="setTouched('phoneNumber')"/>
-          <div v-if="!isValidNumber && isTouched('phoneNumber')" class="text-danger">Please enter your phone
+          <p v-if="!isValidNumber && isTouched('phoneNumber')" class="text-danger">Please enter your phone
             number.
-          </div>
+          </p>
         </div>
 
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="yes" id="flexCheckDefault" v-model="lead.marketingOpt"
                  @blur="setTouched('question')"/>
-          <label class="form-check-label" for="flexCheckDefault">
+          <label class="form-check-label fw-bold" for="flexCheckDefault">
             Do You Want To Recieve Marketing Emails?
           </label>
         </div>
@@ -62,10 +64,10 @@
         <div class="form-check">
           <input class="form-check-input" type="checkbox" value="yes" id="flexCheckDefault" v-model="lead.termsAgreed"
                  :class="{'border-danger': !isValidTerms && isTouched('termsAgreed')}" required @blur="setTouched('termsAgreed')"/>
-          <label class="form-check-label" for="flexCheckDefault">
+          <label class="form-check-label fw-bold" for="flexCheckDefault">
             I agree to the <a href="#">Terms and Conditions</a>
           </label>
-          <div v-if="!isValidTerms && isTouched('termsAgreed')" class="text-danger">Please agree to our terms.</div>
+          <p v-if="!isValidTerms && isTouched('termsAgreed')" class="text-danger">Please agree to our terms.</p>
         </div>
 
         <button type="submit" class="btn btn-primary" :disabled="submitPending" style="margin-top: 20px;">Submit</button>
@@ -205,30 +207,45 @@ export default {
 </script>
 
 <style>
+.bg-color-gray-02 {
+  background-color: #fafafa!important;
+}
+
+.header__synopsis {
+  font-size: 1.125em;
+  font-weight: 700;
+  margin-top: 0.25em;
+}
 
 .lead-capture-form {
-  max-width: 600px;
   margin: 0 auto;
   padding: 20px;
 }
+
+/*.form-title {*/
+/*  font-size: 24px;*/
+/*  margin-bottom: 20px;*/
+/*}*/
 
 .form-group {
   margin-bottom: 20px;
 }
 
-.form-group label {
+.form-group label,
+.form-group p {
   display: block;
   font-size: 16px;
-  color: #555;
+  color: #00a997;
+  font-weight: 700;
 }
 
 .form-control {
   width: 100%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid #00a997 !important;
   padding: 12px;
   font-size: 16px;
   color: #333;
+  border-radius: 0 !important;
 }
 
 .form-control:focus {
@@ -265,6 +282,10 @@ export default {
 @media (max-width: 768px) {
   .lead-capture-form {
     padding: 10px;
+  }
+
+  .form-title {
+    font-size: 20px;
   }
 
   .form-group label {
