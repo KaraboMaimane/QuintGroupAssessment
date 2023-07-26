@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import LeadCapture from './components/LeadCapture.vue';
+import Navbar from "@/components/Navbar.vue";
 
 
 </script>
 
 <template>
-  <div class="container w-100">
-    <LeadCapture/>
-  </div>
+  <Navbar/>
+  <LeadCapture/>
 </template>
 
 <style scoped>

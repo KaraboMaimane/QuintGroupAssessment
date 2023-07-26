@@ -1,6 +1,6 @@
 <template>
-  <div class="d-block mx-auto">
-    <div class="lead-capture-form bg-color-gray-02">
+  <div class="bg-color-gray-02 w-100 py-4">
+    <div class="lead-capture-form w-50">
       <h1 class="heading-title">Get in touch with our team today</h1>
       <p class="sub-heading-text">We would love to work with you.</p>
 
@@ -70,7 +70,7 @@
           <p v-if="!isValidTerms && isTouched('termsAgreed')" class="text-danger">Please agree to our terms.</p>
         </div>
 
-        <button type="submit" class="btn btn-primary" :disabled="submitPending" style="margin-top: 20px;">Submit</button>
+        <button type="submit" class="btn btn-primary mt-2" :disabled="submitPending">Submit</button>
       </form>
     </div>
   </div>
@@ -219,7 +219,7 @@ export default {
 
 .lead-capture-form {
   margin: 0 auto;
-  padding: 20px;
+  /*padding: 20px;*/
 }
 
 /*.form-title {*/
@@ -276,6 +276,27 @@ export default {
 
 .btn-primary:hover {
   background-color: #0056b3;
+}
+
+ #btn-override {
+  background-color: #95c11f;
+  border: 0.125em solid #84ab1b;
+  border-radius: 1.5em;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Proxima Nova,Arial,sans-serif;
+  font-size: 1.3125em;
+  font-weight: 700;
+  height: 3em;
+  line-height: 1;
+  padding: 0.8125em 1.5em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: transform .25s;
+  vertical-align: middle;
+  white-space: nowrap;
 }
 
 /* Responsive styles for smaller screens */
