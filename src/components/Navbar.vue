@@ -1,6 +1,6 @@
 <template>
   <header class="nav-wrapper w-100">
-    <nav class="container py-4">
+    <nav class="container py-2">
       <img src="../assets/logo-monevo-b2b.svg" class="" alt="">
     </nav>
   </header>
