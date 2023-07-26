@@ -1,10 +1,10 @@
 <template>
   <div class="d-block mx-auto">
     <div class="lead-capture-form bg-color-gray-02">
-      <h1 class="header__title">Get in touch with our team today</h1>
-      <p class="header__synopsis">We would love to work with you.</p>
+      <h1 class="heading-title">Get in touch with our team today</h1>
+      <p class="sub-heading-text">We would love to work with you.</p>
 
-      <form @submit.prevent="submitForm" class="form">
+      <form @submit.prevent="submitForm" class="form grid">
         <div class="form-group">
           <label for="firstName">First Name</label>
           <input type="text" class="form-control " id="firstName" v-model="lead.firstName" :class="{'border-danger': !isValidFirstName && isTouched('firstName')}" required
@@ -48,7 +48,7 @@
           <label for="phoneNumber">Phone Number</label>
           <input maxlength="10" minlength="10" type="tel" class="form-control" id="phoneNumber" v-model="lead.phoneNumber"
                  :class="{'border-danger': !isValidNumber && isTouched('phoneNumber')}" required @blur="setTouched('phoneNumber')"/>
-          <p v-if="!isValidNumber && isTouched('phoneNumber')" class="text-danger">Please enter your phone
+          <p v-if="!isValidNumber && isTouched('phoneNumber')" class="text-danger">Please enter a valid phone
             number.
           </p>
         </div>
@@ -211,7 +211,7 @@ export default {
   background-color: #fafafa!important;
 }
 
-.header__synopsis {
+.sub-heading-text {
   font-size: 1.125em;
   font-weight: 700;
   margin-top: 0.25em;
