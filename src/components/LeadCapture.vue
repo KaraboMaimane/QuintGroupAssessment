@@ -1,6 +1,6 @@
 <template>
   <div class="bg-color-gray-02 w-100 py-4">
-    <div class="lead-capture-form w-50">
+    <div class="lead-capture-form">
       <h1 class="heading-title">Get in touch with our team today</h1>
       <p class="sub-heading-text">We would love to work with you.</p>
 
@@ -220,6 +220,7 @@ export default {
 .lead-capture-form {
   margin: 0 auto;
   /*padding: 20px;*/
+  width: 40%;
 }
 
 /*.form-title {*/
@@ -303,6 +304,7 @@ export default {
 @media (max-width: 768px) {
   .lead-capture-form {
     padding: 10px;
+    width: 75%;
   }
 
   .form-title {
